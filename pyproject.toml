@@ -1,0 +1,71 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "network-recon-tool"
+version = "1.0.0"
+description = "Professional cross-platform network reconnaissance tool for authorized network discovery and asset inventory"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.12"
+authors = [
+    { name = "Network Recon Tool Contributors" }
+]
+keywords = [
+    "network", "reconnaissance", "security", "scanner",
+    "discovery", "dns", "ports", "cybersecurity"
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: System Administrators",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: System :: Networking",
+    "Topic :: System :: Systems Administration",
+    "Topic :: Security",
+]
+dependencies = [
+    "rich>=13.7.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+]
+
+[project.scripts]
+recon = "main:main"
+
+[project.urls]
+Homepage = "https://github.com/example/network-recon-tool"
+Repository = "https://github.com/example/network-recon-tool"
+"Bug Tracker" = "https://github.com/example/network-recon-tool/issues"
+Documentation = "https://github.com/example/network-recon-tool/tree/main/docs"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["recon*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+
+[tool.coverage.run]
+source = ["recon"]
+omit = ["tests/*"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
+fail_under = 80
